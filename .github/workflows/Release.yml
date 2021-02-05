@@ -37,11 +37,6 @@ jobs:
       # Create production build
       - name: Create production build
         run: npm run build
-
-      # Get current date for release name
-      - name: Get current date
-        id: date
-        run: echo "name=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
       
       # Zip Public folder for Release
       - name: Zip Build
