@@ -4,12 +4,10 @@ name: CI - Release
 
 # Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on Tag
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+   tags:
+    - '*'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -47,6 +45,10 @@ jobs:
         uses: anton-yurchenko/git-release@v3.4.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RAFT_RELEASE: "false"
+          PRE_RELEASE: "false"
+          CHANGELOG_FILE: "CHANGELOG.md"
+          ALLOW_EMPTY_CHANGELOG: "false"
         with:
           args: |
               build.zip
