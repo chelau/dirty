@@ -1,6 +1,8 @@
 <script>
 	import {currentGameScreen, game,  settings, saveSettings, endGame, prevGameScreen, goToHome } from '../stores/stores.js'
-    
+    import Credits from './Credits.svelte'
+    import Changelog from './Changelog.svelte'
+
    function changeGoal(){
        saveSettings();
    }
@@ -40,7 +42,7 @@
                             <div class="row mb-2 justify-content-center">
                                 <div class="col-12">
                                     <label for="pointsGoal" class="form-label">Punten Doel:</label>
-                                    <input type="number" class="form-control" id="pointsGoal" bind:value="{$settings.pointsToWin}"
+                                    <input inputmode="numeric" pattern="[0-9]*" type="number" class="form-control" id="pointsGoal" bind:value="{$settings.pointsToWin}"
                                     on:change="{() => changeGoal()}">
                                 </div>
                             </div>
@@ -62,21 +64,22 @@
                 <div class="col-12 col-md-8 col-lg-6 mb-3">
                     <div class="card bg-red" on:click="{() => endGame()}">
                         <div class="card-body text-center">
-                            <h3 class="c-white">Beeindig spel</h3>
+                            <h3 class="c-white">Beeindig Spel</h3>
                         </div>
                     </div>
                 </div>
             </div>
             {/if}
 
-            <div class="fixed-bottom">
-                <div class="row mb-4">
-                    <div class="col-12 c-white text-center">
-                        <button on:click="{() => forceSWupdate()}" class="btn btn-small bg-blue c-white d-block mx-auto">Force Update</button>
-                        <span>App Ver. {window.appVer}</span><br>
-                        <span>Words Ver. {window.wordsDBVer}</span><br><br>
-                        <h6>Made with <i class="fas fa-heart"></i> by <a href="https://github.com/TheMardy" target="_blank">Mardy</a></h6>
-                    </div>
+            <div class="row mb-4 mt-5">
+                <div class="col-12 c-white text-center">
+                    <button on:click="{() => {currentGameScreen.set(Credits)}}" class="btn btn-small bg-blue c-white d-block mx-auto mb-2"><i class="fas fa-crown"></i> Wall of Fame <i class="fas fa-crown"></i></button>
+                    <span class="text-decoration-underline" on:click="{() => {currentGameScreen.set(Changelog)}}">Version: 1.1.0</span>
+                    <div on:click="{() => forceSWupdate()}" class="d-inline">
+                        <i class="fas fa-sync-alt"></i>
+                    </div><br>
+                    
+                    <h6>Made with <i class="fas fa-heart mt-4"></i> by <a href="https://github.com/TheMardy" target="_blank">Mardy</a></h6>
                 </div>
             </div>
     </div>

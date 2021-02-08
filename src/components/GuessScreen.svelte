@@ -4,14 +4,18 @@
 
     let turnSecondsLeft = 30;
 
-let gameTimer = setInterval(function(){
+    let gameTimer = setInterval(function(){
             if(turnSecondsLeft <= 1){
-                clearInterval(gameTimer);
-                currentGameScreen.set(TimeUp);
+                goToTimeUp();
             } else {
                 turnSecondsLeft -= 1;
             }
         }, 1000);
+
+    function goToTimeUp() {
+        clearInterval(gameTimer);
+        currentGameScreen.set(TimeUp);
+    }
 </script>
 
 
@@ -38,6 +42,15 @@ let gameTimer = setInterval(function(){
                         <h4 class="mb-3">{word}</h4>
                         {/if}
                         {/each}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center pt-3">
+            <div class="col-12 col-md-8 col-lg-6 mb-3">
+                <div class="card bg-blue" on:click="{() => goToTimeUp()}">
+                    <div class="card-body text-center">
+                        <h2 class="c-white">Stop Beurt <i class="fas fa-chevron-right"></i></h2>
                     </div>
                 </div>
             </div>

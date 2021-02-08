@@ -19,7 +19,6 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",
     "bootstrap": "^5.0.0-beta1",
-    "page": "^1.11.6",
     "sirv-cli": "^0.4.4"
   }
 }

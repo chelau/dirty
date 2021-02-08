@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
 	import InterimScore from './InterimScore.svelte'
 	import Settings from './Settings.svelte'
+	import Help from './Help.svelte'
 	import {currentGameScreen, game, localStorage, settings, prevGameScreen } from '../stores/stores.js'
     import {wordsDatabase} from '../stores/wordsDatabase.js';
     
@@ -72,17 +73,47 @@
         newTeamMemberName = "";
         saveToLocalStorage();
     }
+    function removePlayer(teamIndex, playerIndex) {
+        teams[teamIndex].players.splice(playerIndex, 1);
+        //Reactivity
+        teams[teamIndex].players = teams[teamIndex].players;
+        saveToLocalStorage();
+    }
+    function removeTeam(teamIndex) {
+        teams.splice(teamIndex, 1);
+        //Reactivity
+        teams = teams;
+        saveToLocalStorage();
+    }
     function resetTeams() {
         teams = [];
         $localStorage.removeItem('teams');
     }
     function startGame() {
-        game.set(new Game(teams));
-        $game.started = new Date();
-        $game.words = wordsDatabase;
-        $localStorage.setItem('game', JSON.stringify($game));
-        prevGameScreen.set(InterimScore);
-        currentGameScreen.set(InterimScore);
+        let canStart = true;
+        if(!teams.length > 1){
+            canStart = false;
+            alert("Er zijn minimaal 2 teams nodig om te starten");
+            console.log("Er zijn minimaal 2 teams nodig om te starten");
+            return;
+        }
+
+        teams.forEach(team => {
+            if(team.players.length < 2) {
+                canStart = false;
+                alert("Team "+team.name+" heeft minder dan 2 spelers");
+                return;
+            }
+        })
+
+        if(canStart) {
+            game.set(new Game(teams));
+            $game.started = new Date();
+            $game.words = wordsDatabase;
+            $localStorage.setItem('game', JSON.stringify($game));
+            prevGameScreen.set(InterimScore);
+            currentGameScreen.set(InterimScore);
+        }
     }
     function resumeGame() {
         prevGameScreen.set(InterimScore);
@@ -108,6 +139,9 @@
     <div class="container-fluid pt-2">
         <div class="row mb-3">
             <div class="col-12">
+                <div class="float-start" on:click="{() => currentGameScreen.set(Help)}">
+                    <i class="c-white fas fa-question-circle"></i>
+                </div>
                 <div class="float-end" on:click="{() => currentGameScreen.set(Settings)}">
                     <i class="c-white fas fa-cog"></i>
                 </div>
@@ -126,9 +160,9 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="row mb-2">
+                                <div class="col-12"><h5 class="text-center">Team Toevoegen</h5></div>
                                 <div class="col-12">
-                                    <label for="questionInput" class="form-label">Team:</label>
-                                    <input class="form-control" type="text" bind:value="{newTeamName}">
+                                    <input class="form-control" type="text" bind:value="{newTeamName}" placeholder="Team Naam">
                                 </div>
                             </div>
                             <div class="row justify-content-center">
@@ -138,7 +172,7 @@
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-4 mb-2">
                                     <button class="btn bg-red w-100 c-white" 
-                                        on:click="{() => resetTeams()}">Reset</button>
+                                        on:click="{() => resetTeams()}">Vewijder Teams</button>
                                 </div>
                             </div>
                         </div>
@@ -160,18 +194,31 @@
     
                             {#if team.playersVisible}
                             <div class="clearfix"></div>
+                            <div class="row justify-content-center">
+                                <div class="col-4">
+                                    <button class="d-inline btn btn-small bg-red c-white"
+                                    on:click="{() => {removeTeam(i)}}"
+                                    ><i class="fas fa-trash-alt"></i> Team</button>
+                                </div>
+                            </div>
                             <hr>
                             <div class="row mb-3">
                                 <div class="col-8 col-md-10">
-                                    <input class="form-control" type="text" bind:value="{newTeamMemberName}" placeholder="Naam">
+                                    <input class="form-control" type="text" bind:value="{newTeamMemberName}" placeholder="Speler Naam">
                                 </div>
                                 <div class="col-4 col-md-2">
                                     <button class="btn bg-blue w-100"
                                         on:click="{() => addPlayer(i)}"><i class="fas fa-plus-square c-white"></i></button>
                                 </div>
                             </div>
-                            {#each team.players as player}
-                            <h5>{player.name}</h5>
+                            <hr>
+                            {#each team.players as player, j}
+                            <h5><button class="float-end d-inline btn btn-small bg-red"
+                                on:click="{() => {removePlayer(i, j)}}"
+                                ><i class="fas fa-trash-alt c-white"></i></button> {player.name}</h5>
+                            {#if j != team.players.length-1}
+                            <hr>
+                            {/if}
                             {/each}
                             {/if}
                         </div>
@@ -192,7 +239,7 @@
                 </div>
             </div>
             {/if}
-            {#if teams.length > 1 && teams[0].players.length > 1}
+
             <div class="row justify-content-center mt-3 mb-3">
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="card bg-blue" on:click="{() => startGame()}">
@@ -202,7 +249,7 @@
                     </div>
                 </div>
             </div>
-            {/if}
+
         </div>
     </div>
     
