@@ -1,6 +1,7 @@
 <script>
     import {currentGameScreen, getCurrentPlayer, currentFiveWords } from '../stores/stores.js'
 	import TimeUp from './TimeUp.svelte'
+	import { fly } from 'svelte/transition';
 
     let turnSecondsLeft = 30;
 
@@ -19,7 +20,7 @@
 </script>
 
 
-<div class="vertical-center">
+<div class="vertical-center" in:fly>
     <div class="container-fluid">
         <div class="row justify-content-center pt-3">
             <div class="col-12 mb-5 text-center">

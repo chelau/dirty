@@ -89,7 +89,9 @@ button:focus {
 .bg-red {
 	background-color: #c20000!important;
 }
-
+.c-red {
+	color: #c20000!important;
+}
 .vertical-center {
 	min-height: 80%;  /* Fallback for browsers do NOT support vh unit */
 	min-height: 80vh; /* These two lines are counted as one :-)       */

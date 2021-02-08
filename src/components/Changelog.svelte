@@ -1,13 +1,14 @@
 <script>
 	import {currentGameScreen} from '../stores/stores.js'
     import Settings from './Settings.svelte'
+	import { fly } from 'svelte/transition';
   
     let v110 = true;
     let v100 = false;
 
     </script>
     
-    <div class="container-fluid pt-2 vh-100 bg-purple">
+    <div class="container-fluid pt-2 vh-100 bg-purple" in:fly>
         <div class="row mb-3">
             <div class="col-12">
                 <div class="float-end" on:click="{() => currentGameScreen.set(Settings)}">
@@ -46,6 +47,8 @@
                                         <li>Possibility to delete Teams</li>
                                         <li>Possibility to delete Players</li>
                                         <li>Useful messages when trying to start game without enough Teams / Players</li>
+                                        <li>Reset to default settings button</li>
+                                        <li>Transitions between pages</li>
                                     </ul>
                                     <h5>Fixed</h5>
                                     <ul>

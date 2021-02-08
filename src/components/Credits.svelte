@@ -1,9 +1,11 @@
 <script>
 	import {currentGameScreen, game,  settings, saveSettings, endGame, prevGameScreen, goToHome } from '../stores/stores.js'
     import Settings from './Settings.svelte'
+	import { fly } from 'svelte/transition';
   
     </script>
     
+<div in:fly>
     <div class="container-fluid pt-2 vh-100 bg-purple">
         <div class="row mb-3">
             <div class="col-12">
@@ -38,8 +40,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
+            </div>          
+        </div>
     </div>
 </div>
     

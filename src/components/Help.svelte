@@ -1,6 +1,7 @@
 <script>
 	import {currentGameScreen, game,  settings, saveSettings, endGame, prevGameScreen, goToHome } from '../stores/stores.js'
     import Home from './Home.svelte'
+	import { fly } from 'svelte/transition';
   
     let safari = false;
     let chrome = false;
@@ -11,7 +12,7 @@
 
     </script>
     
-    <div class="container-fluid pt-2 vh-100 bg-purple">
+    <div class="container-fluid pt-2 vh-100" in:fly>
         <div class="row mb-3">
             <div class="col-12">
                 <div class="float-end" on:click="{() => currentGameScreen.set(Home)}">
@@ -112,8 +113,8 @@
                                     {:else}
                                     <h5 on:click="{() => {makeTeams = !makeTeams}}">1. Teams maken <i class="fas float-end d-inline fa-chevron-down"></i></h5>
                                     <hr>
-                                    <p class="mb-0">
-                                        Voeg een team toe door de teamnaam in te vullen en op de <i class="fas float-end d-inline fa-plus-square"></i> knop te klikken. <br>
+                                    <p class="">
+                                        Voeg een team toe door de teamnaam in te vullen en op de <i class="fas fa-plus-square"></i> knop te klikken. <br>
                                         Voeg vervolgens spelers toe door op het team te klikken, de speler naam in te vullen en op de <i class="fas fa-plus-square"></i> knop
                                         te klikken <br> <br>
                                         Note: Een team bestaat uit minimaal 2 spelers
@@ -129,7 +130,7 @@
                                     {:else}
                                     <h5 on:click="{() => {startGame = !startGame}}">2. Spel starten <i class="fas float-end d-inline fa-chevron-down"></i></h5>
                                     <hr>
-                                    <p class="mb-0">
+                                    <p class="">
                                         Wanneer er minimaal 2 teams van 2 personen zijn, kan het spel gestart worden door op de knop "Start Spel" te klikken. <br>
                                     </p>
                                     {/if}

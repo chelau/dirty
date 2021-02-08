@@ -1,12 +1,14 @@
 import { writable, get } from 'svelte/store';
 import Home from '../components/Home.svelte';
 
+const defaultSettings = {pointsToWin: 30};
+
 export const currentGameScreen = writable(null);
 export const prevGameScreen = writable(null);
 export const game = writable(null);
 export const localStorage = writable(null);
 export const currentFiveWords = writable(null);
-export const settings = writable({pointsToWin: 30});
+export const settings = writable(defaultSettings);
 export function getOrderedTeams() {
     return JSON.parse(JSON.stringify(get(game))).teams.sort(compareTeamPoints);
 } 
@@ -44,6 +46,11 @@ export function setNextFiveWords() {
 
 function saveGame() {
     get(localStorage).setItem('game', JSON.stringify(get(game)));
+}
+
+export function setDefaultSettings() {
+    settings.set(defaultSettings);
+    saveSettings();
 }
 
 export function saveSettings() {

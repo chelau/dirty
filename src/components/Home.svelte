@@ -2,9 +2,11 @@
     import { onMount } from 'svelte';
 	import InterimScore from './InterimScore.svelte'
 	import Settings from './Settings.svelte'
+	import Toast from './Toast.svelte'
 	import Help from './Help.svelte'
 	import {currentGameScreen, game, localStorage, settings, prevGameScreen } from '../stores/stores.js'
     import {wordsDatabase} from '../stores/wordsDatabase.js';
+	import { fly } from 'svelte/transition';
     
     class Game {
       constructor(teams) {
@@ -31,7 +33,7 @@
 	}
 
 
-    let teams = new Array();
+    let teams = [];
     
     onMount(async () => {
         init();
@@ -90,18 +92,18 @@
         $localStorage.removeItem('teams');
     }
     function startGame() {
+
         let canStart = true;
-        if(!teams.length > 1){
+        if(teams.length < 2){
             canStart = false;
-            alert("Er zijn minimaal 2 teams nodig om te starten");
-            console.log("Er zijn minimaal 2 teams nodig om te starten");
+            window.pushToast("Er zijn minimaal 2 teams nodig om te starten");
             return;
         }
 
         teams.forEach(team => {
             if(team.players.length < 2) {
                 canStart = false;
-                alert("Team "+team.name+" heeft minder dan 2 spelers");
+                window.pushToast("Team "+team.name+" heeft minder dan 2 spelers");
                 return;
             }
         })
@@ -136,6 +138,7 @@
     
     </script>
     
+<div in:fly>
     <div class="container-fluid pt-2">
         <div class="row mb-3">
             <div class="col-12">
@@ -172,7 +175,7 @@
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-4 mb-2">
                                     <button class="btn bg-red w-100 c-white" 
-                                        on:click="{() => resetTeams()}">Vewijder Teams</button>
+                                        on:click="{() => resetTeams()}"><i class="fas fa-trash-alt"></i> Teams</button>
                                 </div>
                             </div>
                         </div>
@@ -185,22 +188,16 @@
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="d-inline float-start">{team.name}</h3>
                             {#if team.playersVisible}
-                            <h3 class="d-inline float-end" on:click="{() => {team.playersVisible = !team.playersVisible; saveToLocalStorage()}}">{team.players.length || 0} spelers <i class="fas fa-chevron-down"></i></h3>
+                            <h3 class="d-inline mb-0 float-start"><div class="d-inline" on:click="{() => {removeTeam(i)}}"><i class="fas fa-trash-alt c-red"></i></div> {team.name}</h3>
+                            <h3 class="d-inline mb-0 float-end" on:click="{() => {team.playersVisible = !team.playersVisible; saveToLocalStorage()}}">{team.players.length || 0} spelers <i class="fas fa-chevron-down"></i></h3>
                             {:else}
-                            <h3 class="d-inline float-end" on:click="{() => {team.playersVisible = !team.playersVisible; saveToLocalStorage() }}">{team.players.length || 0} spelers <i class="fas fa-chevron-right"></i></h3>
+                            <h3 class="d-inline mb-0 float-start">{team.name}</h3>
+                            <h3 class="d-inline mb-0 float-end" on:click="{() => {team.playersVisible = !team.playersVisible; saveToLocalStorage() }}">{team.players.length || 0} spelers <i class="fas fa-chevron-right"></i></h3>
                             {/if}
     
                             {#if team.playersVisible}
                             <div class="clearfix"></div>
-                            <div class="row justify-content-center">
-                                <div class="col-4">
-                                    <button class="d-inline btn btn-small bg-red c-white"
-                                    on:click="{() => {removeTeam(i)}}"
-                                    ><i class="fas fa-trash-alt"></i> Team</button>
-                                </div>
-                            </div>
                             <hr>
                             <div class="row mb-3">
                                 <div class="col-8 col-md-10">
@@ -213,9 +210,7 @@
                             </div>
                             <hr>
                             {#each team.players as player, j}
-                            <h5><button class="float-end d-inline btn btn-small bg-red"
-                                on:click="{() => {removePlayer(i, j)}}"
-                                ><i class="fas fa-trash-alt c-white"></i></button> {player.name}</h5>
+                            <h5 class="mb-0">{player.name} <div class="d-inline float-end" on:click="{() => {removePlayer(i, j)}}"><i class="fas fa-trash-alt float-end c-red"></i></div></h5>
                             {#if j != team.players.length-1}
                             <hr>
                             {/if}
@@ -252,7 +247,9 @@
 
         </div>
     </div>
-    
+</div>
+
+<Toast />
     <style>
       
      

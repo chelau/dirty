@@ -1,8 +1,9 @@
 <script>
-	import {currentGameScreen, game,  settings, saveSettings, endGame, prevGameScreen, goToHome } from '../stores/stores.js'
+	import {currentGameScreen, game,  settings, saveSettings, endGame, prevGameScreen, goToHome, setDefaultSettings } from '../stores/stores.js'
     import Credits from './Credits.svelte'
     import Changelog from './Changelog.svelte'
-
+    import { fly } from 'svelte/transition';
+    
    function changeGoal(){
        saveSettings();
    }
@@ -19,7 +20,7 @@
     }
     </script>
     
-    <div class="container-fluid pt-2 vh-100 bg-purple">
+    <div class="container-fluid pt-2 vh-100 bg-purple" in:fly >
         <div class="row mb-3">
             <div class="col-12">
                 <div class="float-end" on:click="{() => currentGameScreen.set($prevGameScreen)}">
@@ -70,6 +71,15 @@
                 </div>
             </div>
             {/if}
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6 mb-3">
+                    <div class="card bg-red" on:click="{() => setDefaultSettings()}">
+                        <div class="card-body text-center">
+                            <h3 class="c-white">Standaardinstellingen</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="row mb-4 mt-5">
                 <div class="col-12 c-white text-center">
