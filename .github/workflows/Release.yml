@@ -4,10 +4,9 @@ name: CI - Release
 
 # Controls when the action will run. 
 on:
-  # Triggers the workflow on Tag
+  # Triggers the workflow on Push to master
   push:
-   branches:
-      - main
+    branches: 'master'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -37,7 +36,7 @@ jobs:
         run: npm run build
       
       # Deploy to Server
-      - name: Deploy to Staging server
+      - name: Deploy to server
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
