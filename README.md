@@ -1,53 +1,32 @@
----
+# Thirty Seconds
+[![Version](https://badgen.net/github/release/themardy/ThirtySeconds)](https://github.com/TheMardy/ThirtySeconds/releases)
 
-# Svelte PWA
+Implemented as responsive PWA (Progressive Web App)
+Fun game to play with friends.
+Check it out: [https://thirtyseconds.mardy.tk](https://thirtyseconds.mardy.tk)
 
-This is a Progressive Web App (PWA) template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/tretapey/svelte-pwa.
+Note: Currently the app's language is Dutch only
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+## Contributing
+All contributions are welcome
 
+If you have something to add - anything from a typo through to a whole new feature, please create a pull request or issue.
+ 
+## Developing, Building and running in production mode
+
+##### After cloning, install all NPM packages:
 ```bash
-npx degit tretapey/svelte-pwa my-svelte-pwa
-cd my-svelte-pwa
+npm i
 ```
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
-
-## Get started
-
-Install the dependencies...
-
-```bash
-cd my-svelte-pwa
-npm install
-```
-
-...then start [Rollup](https://rollupjs.org):
-
+##### To run the app in development mode: (automatic rebuilds)
 ```bash
 npm run dev
 ```
 
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
-
-
-## PWA Configuration
-
-- The `service-worker.js` and `manifest.json` files are in the `public` folder.
-- You should update the icons in `/public/images/icons`
-- For an offline experience edit the `/public/offline.html` file.
-- This PWA is installable, the `/public/scripts/install.js` file has the install configuration. You should change the app name in the `logAppInstalled` function.
-    Note: If you don't want to make the app installable you can remove the script from the `index.html` file in the `public` folder.
-    
-For more info, this template was made following this [tutorial](https://codelabs.developers.google.com/codelabs/your-first-pwapp)
- 
-## Building and running in production mode
-
-To create an optimised version of the app:
+##### To create an optimised version of the app:
 
 ```bash
 npm run build
 ```
+The app can then be found in the /public folder.
