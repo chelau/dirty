@@ -84,7 +84,7 @@
             <div class="row mb-4 mt-5">
                 <div class="col-12 c-white text-center">
                     <button on:click="{() => {currentGameScreen.set(Credits)}}" class="btn btn-small bg-blue c-white d-block mx-auto mb-2"><i class="fas fa-crown"></i> Wall of Fame <i class="fas fa-crown"></i></button>
-                    <span class="text-decoration-underline" on:click="{() => {currentGameScreen.set(Changelog)}}">Version: 1.1.0</span>
+                    <span class="text-decoration-underline" on:click="{() => {currentGameScreen.set(Changelog)}}">Version: 1.1.1</span>
                     <div on:click="{() => forceSWupdate()}" class="d-inline">
                         <i class="fas fa-sync-alt"></i>
                     </div><br>
