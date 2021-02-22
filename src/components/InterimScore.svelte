@@ -1,5 +1,5 @@
 <script>
-    import {currentGameScreen, game, getCurrentPlayer, setNextFiveWords, settings, getOrderedTeams, endGame } from '../stores/stores.js'
+    import {currentGameScreen, game, getCurrentPlayer, setNextFiveWords, settings, getOrderedTeams, endGame, getCurrentTeam } from '../stores/stores.js'
     import GuessScreen from './GuessScreen.svelte';
     import Settings from './Settings.svelte';
     import { fly } from 'svelte/transition';
@@ -7,6 +7,10 @@
     function nextRound() {
         setNextFiveWords();
         currentGameScreen.set(GuessScreen);
+    }
+
+    function getGameRound() {
+        return Math.floor($game.round / $game.teams.length) + 1
     }
     
 </script>
@@ -62,10 +66,14 @@
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="card">
                         <div class="card-body text-center c-purple">
-                            <h5 class="d-inline">Ronde {$game.round + 1} </h5>
+                            <h5 class="d-inline">Ronde {getGameRound()} </h5>
                             <h6 class="separator mb-4">de stand</h6>
                             {#each getOrderedTeams() as team, i}
+                            {#if team.name == getCurrentTeam().name && getOrderedTeams()[0].points < $settings.pointsToWin}
+                            <h5 class="float-start d-inline">{i+1} {team.name} <i class="far fa-play-circle"></i></h5>
+                            {:else}
                             <h5 class="float-start d-inline">{i+1} {team.name} </h5>
+                            {/if}
                             <h5 class="float-end d-inline">{team.points}</h5>
                             <div class="clearfix"></div>
                             <hr class="mt-0 mb-4">

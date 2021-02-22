@@ -1,5 +1,5 @@
 <script>
-    import {currentGameScreen, changeCurrentTeamPoints, getCurrentPlayer, currentFiveWords, goToNextRound } from '../stores/stores.js'
+    import {currentGameScreen, changeCurrentTeamPoints, getCurrentPlayer, currentFiveWords, goToNextRound, getCurrentTeam } from '../stores/stores.js'
 	import InterimScore from './InterimScore.svelte'
 	import { fly } from 'svelte/transition';
 
@@ -16,6 +16,7 @@ function changePoints(inputEvent) {
     <div class="container-fluid">
         <div class="row justify-content-center pt-3">
             <div class="col-12 mb-5 text-center">
+                <h5 class="c-white mb-0">{getCurrentTeam().name}</h5>
                 <h5 class="c-white">{getCurrentPlayer().name}</h5>
             </div>
         </div>

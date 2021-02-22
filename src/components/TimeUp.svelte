@@ -1,5 +1,5 @@
 <script>
-   	import {currentGameScreen, getCurrentPlayer } from '../stores/stores.js'
+   	import {currentGameScreen, getCurrentPlayer, getCurrentTeam } from '../stores/stores.js'
     import GuessedOverview from './GuessedOverview.svelte';
 	import { fly } from 'svelte/transition';
 
@@ -13,6 +13,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center pt-3">
             <div class="col-12 mb-5 text-center">
+                <h5 class="c-white mb-0">{getCurrentTeam().name}</h5>
                 <h5 class="c-white">{getCurrentPlayer().name}</h5>
             </div>
         </div>

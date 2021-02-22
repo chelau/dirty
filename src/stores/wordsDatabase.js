@@ -1,5 +1,4 @@
 export let wordsDatabase = [
-//START Mayke
 "Steiger", 
 "Hertog Jan",
 "Grolsch",
@@ -22,8 +21,6 @@ export let wordsDatabase = [
 "Hijskraan",
 "Caravan",
 "Jupiler", 
-//END MAYke
-//START Noreen
 "Amsterdam", 
 "Eindhoven",
 "Twente",
@@ -52,8 +49,6 @@ export let wordsDatabase = [
 "Fortnite",
 "Netflix",
 "Wimbledon", 
-//END Noreen
-//START Danya
 "November", 
 "Heilige Maagd Maria",
 "Disney",
@@ -135,7 +130,6 @@ export let wordsDatabase = [
 "Bullshit",
 "Witte Kerst",
 "Spotify", 
-//END Danya
 "Elon Musk",
 "SpaceX",
 "Tesla",
