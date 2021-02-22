@@ -28,7 +28,7 @@ jobs:
         with:
           find: "thirty-seconds-cache-v-X"
           replace: "thirty-seconds-cache-v-$GITHUB_SHA" 
-          include: "/public/service-worker.js"
+          include: "public/service-worker.js"
         
       # Set up Node and
       - uses: actions/setup-node@v2
