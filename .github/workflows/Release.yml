@@ -22,13 +22,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      # Change CACHE_NAME so that the app can automatically update
+       # Change CACHE_NAME so that the app can automatically update
       - name: Find and Replace
-        uses: jacobtomlinson/gha-find-replace@master
+        uses: bluwy/substitute-string-action@v1
         with:
-          find: "thirty-seconds-cache-v-X"
-          replace: "thirty-seconds-cache-v-$GITHUB_SHA" 
-          include: "public/service-worker.js"
+          _input-file: "public/service-worker.js"
+          thirty-seconds-cache-v-X: "thirty-seconds-cache $GITHUB_SHA"
+      - run: echo ${{ steps.sub.outputs.result }}
         
       # Set up Node and
       - uses: actions/setup-node@v2
