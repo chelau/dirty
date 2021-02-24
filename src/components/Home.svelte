@@ -5,8 +5,8 @@
 	import Toast from './Toast.svelte'
 	import Help from './Help.svelte'
 	import {currentGameScreen, game, localStorage, settings, prevGameScreen } from '../stores/stores.js'
-    import {wordsDatabase} from '../stores/wordsDatabase.js';
 	import { fly } from 'svelte/transition';
+import ChooseListScreen from './ChooseListScreen.svelte';
     
     class Game {
       constructor(teams) {
@@ -111,10 +111,9 @@
         if(canStart) {
             game.set(new Game(teams));
             $game.started = new Date();
-            $game.words = wordsDatabase;
             $localStorage.setItem('game', JSON.stringify($game));
-            prevGameScreen.set(InterimScore);
-            currentGameScreen.set(InterimScore);
+            prevGameScreen.set(ChooseListScreen);
+            currentGameScreen.set(ChooseListScreen);
         }
     }
     function resumeGame() {

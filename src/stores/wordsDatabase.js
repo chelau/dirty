@@ -1,4 +1,4 @@
-export let wordsDatabase = [
+export const commonKnowledge = [
 "Steiger", 
 "Hertog Jan",
 "Grolsch",
@@ -10,8 +10,6 @@ export let wordsDatabase = [
 "Kabouter Lui",
 "Koffie",
 "Thee",
-"Hof van Saksen",
-"Lunenburg",
 "6 Happy Hours",
 "Airpods",
 "Apple Watch",
@@ -221,8 +219,7 @@ export let wordsDatabase = [
 "Virtual Reality",
 ];
 
-const hdlv = [
-"Martijns Kapsel",
+export const hdlv = [
 "International Verkopen",
 "Jip Junior",
 "Ik Men Nogal",
@@ -230,7 +227,52 @@ const hdlv = [
 "Lilleke Natnekkers",
 "Wijnschapen",
 "Skribbl.io",
+"Hof van Saksen",
+"Lunenburg",
+"Toch mar Wel",
+"Schik maken",
+"Carterpan",
+"Bedaf",
+"Hofman",
+"Stuiterbal",
+"Dinther",
+"Loosbroek",
+"Vinkel",
+"Heesch",
+"Zuipvakantie",
+"Knorretje",
+"Kantoer",
+"Exploding Kittens",
+"Yahtzee",
+"Spelletjesavond",
+"Sneeuwballengevecht",
+"Quixx",
 ] // end hdlv
+
+export const everydayLife = [
+"Boom",
+"Automerk",
+"Huisdeur",
+"Deurklink",
+"Toilet",
+"Vaatwasser",
+"Gootsteen",
+"Prullenbak",
+"Dreft",
+"Gasfornuis",
+"Stoomoven",
+"Kitten",
+"Vlaggetjes",
+"Kinderfiets",
+"Pizzaoven",
+"Pizza",
+"Macaroni",
+"Aardappel",
+"Wortel",
+"Appel",
+"Gazon",
+"Lijnbus",
+]; // end everydayLife
 
 const toAdd = [
 
