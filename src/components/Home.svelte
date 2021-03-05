@@ -7,6 +7,8 @@
 	import {currentGameScreen, game, localStorage, settings, prevGameScreen } from '../stores/stores.js'
 	import { fly } from 'svelte/transition';
 import ChooseListScreen from './ChooseListScreen.svelte';
+import HomeTeamsCollapsible from './HomeTeamsCollapsible.svelte';
+import { teams, saveTeamsToLocalStorage } from '../stores/homeStores.js'
     
     class Game {
       constructor(teams) {
@@ -22,19 +24,9 @@ import ChooseListScreen from './ChooseListScreen.svelte';
         this.name = name;
         this.players = [];
         this.points = 0;
-        this.playersVisible = false;
       }
     }
-    
-    class Player {
-      constructor(name) {
-        this.name = name;
-      }
-	}
 
-
-    let teams = [];
-    
     onMount(async () => {
         init();
     });
@@ -43,7 +35,7 @@ import ChooseListScreen from './ChooseListScreen.svelte';
         //Recover from Local Storage
         let teamsFromStorage = $localStorage.getItem('teams');
         if(teamsFromStorage != null) {
-            teams = JSON.parse(teamsFromStorage);
+            teams.set(JSON.parse(teamsFromStorage));
         }
         let gameFromStorage = $localStorage.getItem('game');
         if(gameFromStorage != null) {
@@ -55,52 +47,29 @@ import ChooseListScreen from './ChooseListScreen.svelte';
         }
     }
     
-    function saveToLocalStorage() {
-        $localStorage.setItem('teams', JSON.stringify(teams));
-    }
-    
     function addTeam() {
         let team = new Team(newTeamName);
-        teams.push(team);
+        $teams.push(team);
         //Reactivity
-        teams = teams;
+        $teams = $teams;
         newTeamName = "";
-        saveToLocalStorage();
+        saveTeamsToLocalStorage();
     }
-    function addPlayer(teamIndex) {
-        let player = new Player(newTeamMemberName);
-        teams[teamIndex].players.push(player);
-        //Reactivity
-        teams[teamIndex].players = teams[teamIndex].players;
-        newTeamMemberName = "";
-        saveToLocalStorage();
-    }
-    function removePlayer(teamIndex, playerIndex) {
-        teams[teamIndex].players.splice(playerIndex, 1);
-        //Reactivity
-        teams[teamIndex].players = teams[teamIndex].players;
-        saveToLocalStorage();
-    }
-    function removeTeam(teamIndex) {
-        teams.splice(teamIndex, 1);
-        //Reactivity
-        teams = teams;
-        saveToLocalStorage();
-    }
+   
     function resetTeams() {
-        teams = [];
+        teams.set([]);
         $localStorage.removeItem('teams');
     }
     function startGame() {
 
         let canStart = true;
-        if(teams.length < 2){
+        if($teams.length < 2){
             canStart = false;
             window.pushToast("Er zijn minimaal 2 teams nodig om te starten");
             return;
         }
 
-        teams.forEach(team => {
+        $teams.forEach(team => {
             if(team.players.length < 2) {
                 canStart = false;
                 window.pushToast("Team "+team.name+" heeft minder dan 2 spelers");
@@ -109,7 +78,7 @@ import ChooseListScreen from './ChooseListScreen.svelte';
         })
 
         if(canStart) {
-            game.set(new Game(teams));
+            game.set(new Game($teams));
             $game.started = new Date();
             $localStorage.setItem('game', JSON.stringify($game));
             prevGameScreen.set(ChooseListScreen);
@@ -133,7 +102,6 @@ import ChooseListScreen from './ChooseListScreen.svelte';
     }
     
     let newTeamName = "";
-    let newTeamMemberName = "";
     
     </script>
     
@@ -182,8 +150,10 @@ import ChooseListScreen from './ChooseListScreen.svelte';
                 </div>
             </div>
     
-            {#each teams as team, i}
-            <div class="row justify-content-center">
+            {#if $teams.length > 0}
+            {#each $teams as team, i}
+            <HomeTeamsCollapsible index={i}/>
+            <!-- <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="card">
                         <div class="card-body">
@@ -218,8 +188,9 @@ import ChooseListScreen from './ChooseListScreen.svelte';
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             {/each}
+            {/if}
     
             {#if $game != null}
             <div class="row justify-content-center mt-3">
