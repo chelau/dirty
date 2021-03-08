@@ -4,7 +4,17 @@
 	import { fly } from 'svelte/transition';
 
 function changePoints(inputEvent) {
-    if(inputEvent.target.checked) {
+    //Get Input if not form-check-input
+    let target = inputEvent.target;
+    if(target.classList.contains('form-check')) {
+        target = target.firstChild;
+        target.checked = !target.checked;
+    } else if (target.classList.contains('form-check-label')){
+        target = target.parentNode.firstChild;
+        target.checked = !target.checked;
+    }
+
+    if(target.checked) {
         changeCurrentTeamPoints(1);
     } else {
         changeCurrentTeamPoints(-1);
@@ -33,8 +43,8 @@ function changePoints(inputEvent) {
                         {#each $currentFiveWords as word, i}
                         {#if i == 4}
                         <h4 class="">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" on:click="{(inputBox) => {changePoints(inputBox)}}">
+                            <div class="form-check" on:click="{(inputBox) => {changePoints(inputBox)}}">
+                                <input class="form-check-input" type="checkbox" value="">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     {word}
                                 </label>
@@ -42,8 +52,8 @@ function changePoints(inputEvent) {
                         </h4>
                         {:else}
                         <h4 class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" on:click="{(inputBox) => {changePoints(inputBox)}}">
+                            <div class="form-check" on:click="{(inputEvent) => {changePoints(inputEvent)}}">
+                                <input class="form-check-input" type="checkbox" value="" >
                                 <label class="form-check-label" for="flexCheckDefault">
                                     {word}
                                 </label>
