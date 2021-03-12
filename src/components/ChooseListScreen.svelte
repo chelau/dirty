@@ -71,6 +71,7 @@
                                 <label class="form-check-label" for="check1">
                                     <i class="fas fa-book"></i> Algemene Kennis <small class="float-right">({commonKnowledge.length})</small>
                                 </label>
+                                <span class="float-end"><a href="mailto:mardy@hdlv.nl?subject=Words - Algemene Kennis&body=Hoi, ik wil graag woorden toevoegen aan de Algemene Kennis lijst \n\n Mijn naam (Leeg = Anoniem): \n Woorden: \n"><i class="fas fa-plus-square"></i></a></span>
                             </div>
                             <hr class="mt-0">
                             <p class="my-0">Een mix van woorden, namen, merken en meer!</p>
@@ -88,6 +89,7 @@
                                 <label class="form-check-label" for="check2">
                                     <i class="fas fa-tree"></i> Everyday Life <small class="float-right">({everydayLife.length})</small>
                                 </label>
+                                <span class="float-end"><a href="mailto:mardy@hdlv.nl?subject=Words - Everyday Life&body=Hoi, ik wil graag woorden toevoegen aan de Everyday Life lijst \n\n Mijn naam (Leeg = Anoniem): \n Woorden: \n"><i class="fas fa-plus-square"></i></a></span>
                             </div>
                             <hr class="mt-0">
                             <p class="my-0">Een mix van allerdaagse woorden en namen</p>
@@ -105,6 +107,7 @@
                                 <label class="form-check-label" for="check3">
                                     <i class="fas fa-beer"></i> HDLV <small class="float-right">({hdlv.length})</small>
                                 </label>
+                                <span class="float-end"><a href="mailto:mardy@hdlv.nl?subject=Words - HDLV&body=Hoi, ik wil graag woorden toevoegen aan de HDLV lijst \n\n Mijn naam (Leeg = Anoniem): \n Woorden: \n"><i class="fas fa-plus-square"></i></a></span>
                             </div>
                             <hr class="mt-0">
                             <p class="my-0">Woorden van de vriendengroep</p>
@@ -122,6 +125,9 @@
 <style>
    .form-check {
         font-size: 20px;
+   }
+   .fa-plus-square {
+       font-size: 25px;
    }
   
 </style>

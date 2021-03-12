@@ -217,6 +217,22 @@ export const commonKnowledge = [
 "Galileo",
 "Augmented Reality",
 "Virtual Reality",
+"Smirnoff",
+"Zonnebril",
+"Robert ten Brink",
+"All You Need Is Love",
+"Radio 538",
+"QMusic",
+"De Fabeltjeskrant",
+"Yolanthe Cabeau",
+"Juruk",
+"Limonade",
+"Wiskunde",
+"Calculus",
+"Sloffen",
+"Dory",
+"Nemo",
+"Google Earth",
 ];
 
 export const hdlv = [
