@@ -32,13 +32,13 @@
                 <div class="col-12 col-md-8 col-lg-6 mb-5 text-center">
                     <h1 class="c-white mb-0">Team</h1>
                     <h1 class="c-white mb-0">{getOrderedTeams()[0].name}</h1>
-                    <h1 class="c-white mb-0">Heeft Gewonnen!</h1>
+                    <h1 class="c-white mb-0"><i class="fas fa-award"></i> Heeft Gewonnen! <i class="fas fa-award"></i></h1>
                 </div>
             </div>
                 <div class="row justify-content-center pt-3">
-                    <div class="col-12 col-md-8 col-lg-6 mb-3">
-                    <div class="card bg-blue" on:click="{() => endGame()}">
-                        <div class="card-body text-center">
+                    <div class="col-8 col-lg-3 mb-3">
+                    <div class="card bg-red" on:click="{() => endGame()}">
+                        <div class="py-2 text-center">
                             <h2 class="c-white mb-0">Einde</h2>
                         </div>
                     </div>
