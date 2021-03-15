@@ -197,7 +197,7 @@ import { teams, saveTeamsToLocalStorage } from '../stores/homeStores.js'
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="card bg-blue" on:click="{() => resumeGame()}">
                         <div class="card-body text-center">
-                            <h2 class="c-white">Herstel Spel</h2>
+                            <h2 class="c-white mb-0">Herstel Spel</h2>
                             <span class="c-white">{getResumeGameDateString($game.started)}</span>
                         </div>
                     </div>
@@ -209,7 +209,7 @@ import { teams, saveTeamsToLocalStorage } from '../stores/homeStores.js'
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="card bg-blue" on:click="{() => startGame()}">
                         <div class="card-body text-center">
-                            <h2 class="c-white">Nieuw Spel</h2>
+                            <h2 class="c-white mb-0">Nieuw Spel</h2>
                         </div>
                     </div>
                 </div>

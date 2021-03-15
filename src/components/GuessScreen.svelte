@@ -17,6 +17,12 @@
         clearInterval(gameTimer);
         currentGameScreen.set(TimeUp);
     }
+
+    function endTurnPress() {
+        if (confirm('Weet je zeker dat je je beurt wilt eindigen?')) {
+            goToTimeUp();
+        } 
+    }
 </script>
 
 
@@ -48,11 +54,11 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center pt-3">
-            <div class="col-12 col-md-8 col-lg-6 mb-3">
-                <div class="card bg-blue" on:click="{() => goToTimeUp()}">
-                    <div class="card-body text-center">
-                        <h2 class="c-white">Stop Beurt <i class="fas fa-chevron-right"></i></h2>
+        <div class="row justify-content-center pt-5">
+            <div class="col-8 col-lg-3 mb-3">
+                <div class="card bg-blue" on:click="{() => endTurnPress()}">
+                    <div class="py-2 text-center">
+                        <h2 class="c-white mb-0">Stop Beurt <i class="fas fa-chevron-right"></i></h2>
                     </div>
                 </div>
             </div>

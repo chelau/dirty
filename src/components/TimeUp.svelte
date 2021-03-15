@@ -26,7 +26,7 @@
             <div class="col-12 col-md-8 col-lg-6 mb-3">
                 <div class="card bg-blue" on:click="{() => checkGuessedOverview()}">
                     <div class="card-body text-center">
-                        <h2 class="c-white">Verder <i class="fas fa-chevron-right"></i></h2>
+                        <h2 class="c-white mb-0">Verder <i class="fas fa-chevron-right"></i></h2>
                     </div>
                 </div>
             </div>

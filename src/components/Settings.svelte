@@ -1,7 +1,6 @@
 <script>
 	import {currentGameScreen, game,  settings, saveSettings, endGame, prevGameScreen, goToHome, setDefaultSettings } from '../stores/stores.js'
     import Credits from './Credits.svelte'
-    import Changelog from './Changelog.svelte'
     import { fly } from 'svelte/transition';
     
    function changeGoal(){
@@ -55,7 +54,7 @@
                 <div class="col-12 col-md-8 col-lg-6 mb-3">
                     <div class="card bg-blue" on:click="{() => goToHome()}">
                         <div class="card-body text-center">
-                            <h3 class="c-white">Home</h3>
+                            <h3 class="c-white mb-0">Home</h3>
                         </div>
                     </div>
                 </div>
@@ -65,7 +64,7 @@
                 <div class="col-12 col-md-8 col-lg-6 mb-3">
                     <div class="card bg-red" on:click="{() => endGame()}">
                         <div class="card-body text-center">
-                            <h3 class="c-white">Beeindig Spel</h3>
+                            <h3 class="c-white mb-0">Beeindig Spel</h3>
                         </div>
                     </div>
                 </div>
@@ -75,7 +74,7 @@
                 <div class="col-12 col-md-8 col-lg-6 mb-3">
                     <div class="card bg-red" on:click="{() => setDefaultSettings()}">
                         <div class="card-body text-center">
-                            <h3 class="c-white">Standaardinstellingen</h3>
+                            <h3 class="c-white mb-0">Standaardinstellingen</h3>
                         </div>
                     </div>
                 </div>
