@@ -10,11 +10,11 @@ Note: Currently the app's language is Dutch only
 ## Images
 Home                        |           Score         |     Guess   |
 :-------------------------:|:-------------------------:|:------------:
-![](https://raw.githubusercontent.com/TheMardy/ThirtySeconds/master/src/main.js/images/Home.png "Home screen") | ![](https://raw.githubusercontent.com/TheMardy/ThirtySeconds/master/src/main.js/images/Overview.png "Overview screen") | ![](https://raw.githubusercontent.com/TheMardy/ThirtySeconds/master/src/main.js/images/Guess.png "Guess screen")
+![](https://raw.githubusercontent.com/TheMardy/ThirtySeconds/master/images/Home.png "Home screen") | ![](https://raw.githubusercontent.com/TheMardy/ThirtySeconds/master/images/Overview.png "Overview screen") | ![](https://raw.githubusercontent.com/TheMardy/ThirtySeconds/master/images/Guess.png "Guess screen")
 
 Time Up                        |           Select         |     Score   |
 :-------------------------:|:-------------------------:|:------------:
-![](https://raw.githubusercontent.com/TheMardy/ThirtySeconds/master/src/main.js/images/TimeUp.png "Time up screen") | ![](https://raw.githubusercontent.com/TheMardy/ThirtySeconds/master/src/main.js/images/SelectionScreen.png "Selection screen") | ![](https://raw.githubusercontent.com/TheMardy/ThirtySeconds/master/src/main.js/images/Overview2.png "Overview screen")
+![](https://raw.githubusercontent.com/TheMardy/ThirtySeconds/master/images/TimeUp.png "Time up screen") | ![](https://raw.githubusercontent.com/TheMardy/ThirtySeconds/master/images/SelectionScreen.png "Selection screen") | ![](https://raw.githubusercontent.com/TheMardy/ThirtySeconds/master/images/Overview2.png "Overview screen")
 
 
 ## Contributing
