@@ -48,6 +48,11 @@ import { teams, saveTeamsToLocalStorage } from '../stores/homeStores.js'
     }
     
     function addTeam() {
+        if(newTeamName.length < 1) {
+            window.pushToast("Vul een Team naam in");
+            return;
+        }
+
         let team = new Team(newTeamName);
         $teams.push(team);
         //Reactivity

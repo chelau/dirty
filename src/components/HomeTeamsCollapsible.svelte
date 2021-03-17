@@ -13,6 +13,11 @@
     }
     
     function addPlayer(teamIndex) {
+        if(newTeamMemberName.length < 1) {
+            window.pushToast("Vul een Speler naam in");
+            return;
+        }
+
         let player = new Player(newTeamMemberName);
         $teams[teamIndex].players.push(player);
         //Reactivity
