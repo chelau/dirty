@@ -35,6 +35,7 @@
                                     <span class="d-block">Danya van Marsbergen <small>(81)</small></span>
                                     <span class="d-block">Noreen van den Heuvel <small>(27)</small></span>
                                     <span class="d-block">Mayke Goossens <small>(21)</small></span>
+                                    <span class="d-block">Jip van der Steen <small>(8)</small></span>
                                 </div>
                             </div>
                         </div>

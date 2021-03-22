@@ -74,7 +74,7 @@
                                 <span class="float-end"><a href="mailto:mardy@hdlv.nl?subject=Words - Algemene Kennis&body=Hoi, ik wil graag woorden toevoegen aan de Algemene Kennis lijst \n\n Mijn naam (Leeg = Anoniem): \n Woorden: \n"><i class="fas fa-plus-square"></i></a></span>
                             </div>
                             <hr class="mt-0">
-                            <p class="my-0">Een mix van woorden, namen, merken en meer!</p>
+                            <p class="my-0">Een mix van topografie, bekende personen, merken en meer!</p>
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                                 <span class="float-end"><a href="mailto:mardy@hdlv.nl?subject=Words - Everyday Life&body=Hoi, ik wil graag woorden toevoegen aan de Everyday Life lijst \n\n Mijn naam (Leeg = Anoniem): \n Woorden: \n"><i class="fas fa-plus-square"></i></a></span>
                             </div>
                             <hr class="mt-0">
-                            <p class="my-0">Een mix van allerdaagse woorden en namen</p>
+                            <p class="my-0">Een mix van allerdaagse dingen en namen</p>
                         </div>
                     </div>
                 </div>
