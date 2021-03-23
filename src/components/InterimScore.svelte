@@ -2,7 +2,24 @@
     import {currentGameScreen, game, getCurrentPlayer, setNextFiveWords, settings, getOrderedTeams, endGame, getCurrentTeam } from '../stores/stores.js'
     import GuessScreen from './GuessScreen.svelte';
     import Settings from './Settings.svelte';
+    import Toast from './Toast.svelte';
     import { fly } from 'svelte/transition';
+
+    function startTime() {
+        let counter = 3;
+        window.pushToast(counter);
+
+        let interval = setInterval(function() {
+            counter--;
+            window.pushToast(counter);
+
+            if (counter == 0) {
+                clearInterval(interval);
+                window.clearToasts();
+                nextRound();
+            }
+        }, 1000);
+    }
 
     function nextRound() {
         setNextFiveWords();
@@ -11,6 +28,9 @@
 
     function getGameRound() {
         return Math.floor($game.round / $game.teams.length) + 1
+    }
+    function getTurn() {
+        return $game.round % $game.teams.length
     }
     
 </script>
@@ -27,7 +47,7 @@
     </div>
     <div class="vertical-center">
         <div class="container-fluid">
-            {#if getOrderedTeams()[0].points >= $settings.pointsToWin}
+            {#if getTurn() == 0 && getOrderedTeams()[0].points >= $settings.pointsToWin}
             <div class="row justify-content-center pt-3">
                 <div class="col-12 col-md-8 col-lg-6 mb-5 text-center">
                     <h1 class="c-white mb-0">Team</h1>
@@ -54,7 +74,7 @@
             </div>
             <div class="row justify-content-center pt-3">
                 <div class="col-12 col-md-8 col-lg-6 mb-3">
-                    <div class="card bg-blue" on:click="{() => nextRound()}">
+                    <div class="card bg-blue" on:click="{() => startTime()}">
                         <div class="card-body text-center">
                             <h2 class="c-white mb-0">Start de tijd</h2>
                         </div>
@@ -66,7 +86,7 @@
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="card">
                         <div class="card-body text-center c-purple">
-                            <h5 class="d-inline">Ronde {getGameRound()} </h5>
+                            <h5 class="d-inline">Ronde {getGameRound()} <small>({ getTurn() +1 }/{$game.teams.length})</small> </h5>
                             <h6 class="separator mb-4">de stand</h6>
                             {#each getOrderedTeams() as team, i}
                             {#if team.name == getCurrentTeam().name && getOrderedTeams()[0].points < $settings.pointsToWin}
@@ -85,6 +105,7 @@
         </div>
     </div>
 </div>
+<Toast />
 
 <style>
     .separator {

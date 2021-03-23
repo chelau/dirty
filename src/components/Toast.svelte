@@ -20,9 +20,14 @@
 	const unshiftToast = () => {
 		toasts = toasts.filter((a, i) => i > 0); 
 	};
+	
+	const clearToasts = () => {
+		toasts = [];
+	}
 
 	onMount(() => {
 		window.pushToast = pushToast;
+		window.clearToasts = clearToasts;
 	});
 </script>
 

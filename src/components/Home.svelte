@@ -83,6 +83,7 @@ import { teams, saveTeamsToLocalStorage } from '../stores/homeStores.js'
         })
 
         if(canStart) {
+            window.clearToasts();
             game.set(new Game($teams));
             $game.started = new Date();
             $localStorage.setItem('game', JSON.stringify($game));
@@ -91,6 +92,7 @@ import { teams, saveTeamsToLocalStorage } from '../stores/homeStores.js'
         }
     }
     function resumeGame() {
+        window.clearToasts();
         prevGameScreen.set(InterimScore);
         currentGameScreen.set(InterimScore);
     }
