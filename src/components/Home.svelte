@@ -160,42 +160,6 @@ import { teams, saveTeamsToLocalStorage } from '../stores/homeStores.js'
             {#if $teams.length > 0}
             {#each $teams as team, i}
             <HomeTeamsCollapsible index={i}/>
-            <!-- <div class="row justify-content-center">
-                <div class="col-12 col-md-8 col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            {#if team.playersVisible}
-                            <h3 class="d-inline mb-0 float-start"><div class="d-inline" on:click="{() => {removeTeam(i)}}"><i class="fas fa-trash-alt c-red"></i></div> {team.name}</h3>
-                            <h3 class="d-inline mb-0 float-end" on:click="{() => {team.playersVisible = !team.playersVisible; saveToLocalStorage()}}">{team.players.length || 0} spelers <i class="fas fa-chevron-down"></i></h3>
-                            {:else}
-                            <h3 class="d-inline mb-0 float-start">{team.name}</h3>
-                            <h3 class="d-inline mb-0 float-end" on:click="{() => {team.playersVisible = !team.playersVisible; saveToLocalStorage() }}">{team.players.length || 0} spelers <i class="fas fa-chevron-right"></i></h3>
-                            {/if}
-    
-                            {#if team.playersVisible}
-                            <div class="clearfix"></div>
-                            <hr>
-                            <div class="row mb-3">
-                                <div class="col-8 col-md-10">
-                                    <input class="form-control" type="text" bind:value="{newTeamMemberName}" placeholder="Speler Naam">
-                                </div>
-                                <div class="col-4 col-md-2">
-                                    <button class="btn bg-blue w-100"
-                                        on:click="{() => addPlayer(i)}"><i class="fas fa-plus-square c-white"></i></button>
-                                </div>
-                            </div>
-                            <hr>
-                            {#each team.players as player, j}
-                            <h5 class="mb-0">{player.name} <div class="d-inline float-end" on:click="{() => {removePlayer(i, j)}}"><i class="fas fa-trash-alt float-end c-red"></i></div></h5>
-                            {#if j != team.players.length-1}
-                            <hr>
-                            {/if}
-                            {/each}
-                            {/if}
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             {/each}
             {/if}
     

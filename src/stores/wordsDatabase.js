@@ -475,6 +475,23 @@ export const everydayLife = [
 "Appel",
 "Gazon",
 "Lijnbus",
+"Bakker",
+"Politieagent",
+"Heks",
+"Vlogger",
+"Blogger",
+"Juffrouw",
+"Voetballer",
+"Moeder",
+"Zwembad",
+"Sportschool",
+"Supermarkt",
+"Spookhuis",
+"Bibliotheek",
+"Efteling",
+"Pretpark",
+"Ziekenhuis",
+"Boomhut",
 ]; // end everydayLife
 
 const toAdd = [
