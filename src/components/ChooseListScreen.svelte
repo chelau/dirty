@@ -5,24 +5,25 @@
     import { fly } from 'svelte/transition';
 	import Toast from './Toast.svelte'
     import axios from 'axios';
-    import {commonKnowledge, hdlv, everydayLife} from '../stores/wordsDatabase.js';
+    // import {commonKnowledge, hdlv, everydayLife} from '../stores/wordsDatabase.js';
 import { onMount } from 'svelte';
 
-    let commonKnowledgeSelect = true;
-    let hdlvSelect = false;
-    let everydayLifeSelect = false;
+    // let commonKnowledgeSelect = true;
+    // let hdlvSelect = false;
+    // let everydayLifeSelect = false;
 
     let words = [];
     let categories = [];
 
     const getWords = async () => {
-		const response = await axios.get('http://localhost:1337/api/words');
+		const response = await axios.get('https://dirty-seconds.herokuapp.com/api/words');
 		words = response.data;
 	}
 
     const getCategories = async () => {
-        const response = await axios.get('http://localhost:1337/api/categories');
+        const response = await axios.get('https://dirty-seconds.herokuapp.com/api/categories');
         categories = response.data;
+        console.log(categories);
         categories = categories.map(category => {
             return {
                 id: category.id,

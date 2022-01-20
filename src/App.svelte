@@ -5,7 +5,7 @@
 	import {currentGameScreen, localStorage, prevGameScreen } from './stores/stores.js'
 
 	const getWords = async () => {
-		const response = await axios.get('http://localhost:1337/api/words');
+		const response = await axios.get('https://dirty-seconds.herokuapp.com/api/words');
 		return response.data;
 	}
 
