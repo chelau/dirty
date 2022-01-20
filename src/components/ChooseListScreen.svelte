@@ -1,6 +1,7 @@
 <script>
     import {currentGameScreen, game, localStorage , prevGameScreen} from '../stores/stores.js'
 	import InterimScore from './InterimScore.svelte'
+    import Loading from './Loading.svelte';
     import Settings from './Settings.svelte';
     import { fly } from 'svelte/transition';
 	import Toast from './Toast.svelte'
@@ -15,14 +16,20 @@ import { onMount } from 'svelte';
     let words = [];
     let categories = [];
 
+    let loading = false;
+
     const getWords = async () => {
+        loading = true;
 		const response = await axios.get('https://dirty-seconds.herokuapp.com/api/words');
 		words = response.data;
+        loading = false;
 	}
 
     const getCategories = async () => {
+        loading = true;
         const response = await axios.get('https://dirty-seconds.herokuapp.com/api/categories');
         categories = response.data;
+        loading = false;
         console.log(categories);
         categories = categories.map(category => {
             return {
@@ -115,7 +122,9 @@ import { onMount } from 'svelte';
                     </div>
                 </div>
             </div>
-
+            {#if loading}
+                <Loading/>
+            {/if}
             {#each categories as item}
                 <div class="row justify-content-center">
                     <div class="col-12 col-sm-8 col-lg-5 mb-3">

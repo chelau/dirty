@@ -4,19 +4,10 @@
 	import axios from 'axios';
 	import {currentGameScreen, localStorage, prevGameScreen } from './stores/stores.js'
 
-	const getWords = async () => {
-		const response = await axios.get('https://dirty-seconds.herokuapp.com/api/words');
-		return response.data;
-	}
-
 	onMount(() => {
 		currentGameScreen.set(Home);
 		prevGameScreen.set(Home);
         localStorage.set(window.localStorage);
-		getWords().then(words => {
-			console.log(words);
-			// localStorage.set(words);
-		});
 	});
 
 </script>
