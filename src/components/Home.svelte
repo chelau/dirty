@@ -4,12 +4,21 @@
     import Login from '../components/Login.svelte'
 	import Settings from './Settings.svelte'
 	import Toast from './Toast.svelte'
+    import Admin from './Admin.svelte'
 	import Help from './Help.svelte'
 	import {currentGameScreen, game, localStorage, settings, prevGameScreen } from '../stores/stores.js'
 	import { fly } from 'svelte/transition';
-import ChooseListScreen from './ChooseListScreen.svelte';
-import HomeTeamsCollapsible from './HomeTeamsCollapsible.svelte';
-import { teams, saveTeamsToLocalStorage } from '../stores/homeStores.js'
+    import ChooseListScreen from './ChooseListScreen.svelte';
+    import HomeTeamsCollapsible from './HomeTeamsCollapsible.svelte';
+    import { teams, saveTeamsToLocalStorage } from '../stores/homeStores.js'
+    import jwt_decode from "jwt-decode";
+
+    let user = {}
+
+    const decodeUser = () => {
+        var decoded = jwt_decode(window.localStorage.getItem('auth'));
+        user = decoded
+    }
     
     class Game {
       constructor(teams) {
@@ -35,6 +44,7 @@ import { teams, saveTeamsToLocalStorage } from '../stores/homeStores.js'
 
     onMount(async () => {
         init();
+        decodeUser()
     });
         
     function init() {
@@ -128,6 +138,15 @@ import { teams, saveTeamsToLocalStorage } from '../stores/homeStores.js'
                 <div class="float-end" on:click="{() => currentGameScreen.set(Settings)}">
                     <i class="c-white fas fa-cog"></i>
                 </div>
+                {#if user.roles}
+                    {#if user.roles.includes('admin')}
+                         <div class="float-end" on:click="{() => currentGameScreen.set(Admin)}">
+                             <button class="btn btn-outline-light btn-sm " style="margin-right: 20px;">
+                                 admin
+                             </button>
+                         </div>
+                    {/if}
+                {/if}
             </div>
         </div>
         <div class="row">

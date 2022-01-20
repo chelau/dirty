@@ -22,7 +22,7 @@
             let response = await axios(config);
             console.log(response);
             if ( response.data ) {
-                window.localStorage.setItem('auth', response.data.token);
+                window.localStorage.setItem('auth', response.data);
                 currentGameScreen.set(Home);
                 prevGameScreen.set(Home);
                 localStorage.set(window.localStorage);
