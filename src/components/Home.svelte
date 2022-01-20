@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
 	import InterimScore from './InterimScore.svelte'
+    import Login from '../components/Login.svelte'
 	import Settings from './Settings.svelte'
 	import Toast from './Toast.svelte'
 	import Help from './Help.svelte'
@@ -26,6 +27,11 @@ import { teams, saveTeamsToLocalStorage } from '../stores/homeStores.js'
         this.points = 0;
       }
     }
+
+    $: if(!window.localStorage.getItem('auth')){
+		currentGameScreen.set(Login);
+		prevGameScreen.set(Login);
+	}
 
     onMount(async () => {
         init();

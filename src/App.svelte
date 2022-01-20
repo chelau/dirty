@@ -3,11 +3,11 @@
     import { onMount } from 'svelte'
 	import axios from 'axios';
 	import {currentGameScreen, localStorage, prevGameScreen } from './stores/stores.js'
-
+	
 	onMount(() => {
 		currentGameScreen.set(Home);
 		prevGameScreen.set(Home);
-        localStorage.set(window.localStorage);
+		localStorage.set(window.localStorage);
 	});
 
 </script>
