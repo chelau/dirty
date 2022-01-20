@@ -4,24 +4,72 @@
     import Settings from './Settings.svelte';
     import { fly } from 'svelte/transition';
 	import Toast from './Toast.svelte'
+    import axios from 'axios';
     import {commonKnowledge, hdlv, everydayLife} from '../stores/wordsDatabase.js';
+import { onMount } from 'svelte';
 
     let commonKnowledgeSelect = true;
     let hdlvSelect = false;
     let everydayLifeSelect = false;
 
+    let words = [];
+    let categories = [];
+
+    const getWords = async () => {
+		const response = await axios.get('http://localhost:1337/api/words');
+		words = response.data;
+	}
+
+    const getCategories = async () => {
+        const response = await axios.get('http://localhost:1337/api/categories');
+        categories = response.data;
+        categories = categories.map(category => {
+            return {
+                id: category.id,
+                description: category.description,
+                name: category.name,
+                icon: category.icon,
+                selected: false
+            }
+        })
+        categories[0].selected = true;
+        console.log(categories)
+    }
+
     function startGame() {
         let wordsDatabase = [];
-        if(commonKnowledgeSelect) {
-            wordsDatabase = wordsDatabase.concat(commonKnowledge);
-        }
-        if(hdlvSelect) {
-            wordsDatabase = wordsDatabase.concat(hdlv);
-        }
-        if(everydayLifeSelect) {
-            wordsDatabase = wordsDatabase.concat(everydayLife);
-        }
-
+        let common = [];
+        let hdlvArray = [];
+        let every = [];
+        categories.forEach(category => {
+            if (category.selected) {
+                words.forEach(word => {
+                    if(category.id == word.category.id) {
+                        if(word.category.code === 'commonKnowledge') {
+                            common.push(word.description);
+                        }
+                        wordsDatabase = [...wordsDatabase, word.description];
+                    }
+                });
+            }
+            // if(hdlvSelect) {
+            //     words.forEach(word => {
+            //         if(word.category.code === 'hdlv') {
+            //             hdlvArray.push(word.description);
+            //         }
+            //     });
+            //     wordsDatabase = wordsDatabase.concat(hdlvArray);
+            // }
+            // if(everydayLifeSelect) {
+            //     words.forEach(word => {
+            //         if(word.category.code === 'everydayLife') {
+            //             every.push(word.description);
+            //         }
+            //     });
+            //     wordsDatabase = wordsDatabase.concat(every);
+            // }
+        })
+        console.log(wordsDatabase)
         if(wordsDatabase.length > 1) {
             $game.words = wordsDatabase;
             $localStorage.setItem('game', JSON.stringify($game));
@@ -31,6 +79,11 @@
             window.pushToast("Selecteer minimaal 1 categorie");
         }
     }
+
+    onMount(() => {
+        getWords()
+        getCategories()
+    })
     
 </script>
 
@@ -62,7 +115,29 @@
                 </div>
             </div>
 
-            <div class="row justify-content-center">
+            {#each categories as item}
+                <div class="row justify-content-center">
+                    <div class="col-12 col-sm-8 col-lg-5 mb-3">
+                        <div class="card">
+                            <div class="card-body c-purple text-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="check1" bind:checked={item.selected}>
+                                    <label class="form-check-label" for="check1">
+                                        <i class={item.icon}></i> {item.name} <small class="float-right">
+                                            <!--({commonKnowledge.length})-->
+                                        </small>
+                                    </label>
+                                    <span class="float-end"><a href={`mailto:mardy@hdlv.nl?subject=Words - ${item.name}&body=Hoi, ik wil graag woorden toevoegen aan de Algemene Kennis lijst \n\n Mijn naam (Leeg = Anoniem): \n Woorden: \n`}><i class="fas fa-plus-square"></i></a></span>
+                                </div>
+                                <hr class="mt-0">
+                                <p class="my-0">{item.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {/each}
+
+            <!-- <div class="row justify-content-center">
                 <div class="col-12 col-sm-8 col-lg-5 mb-3">
                     <div class="card">
                         <div class="card-body c-purple text-center">
@@ -114,7 +189,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
            
         
         </div>

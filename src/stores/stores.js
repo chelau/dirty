@@ -54,6 +54,7 @@ export function setDefaultSettings() {
 }
 
 export function saveSettings() {
+    console.log(get(settings))
     get(localStorage).setItem('settings', JSON.stringify(get(settings)));
 }
 export function endGame() {
