@@ -3,7 +3,9 @@ html, body {
 	width: 100%;
 	height: 100%;
 	background-color: #321067!important;
-	overscroll-behavior: none!important;
+	background-image: url("https://erectie.nu/kamagra-winkel/wp-content/uploads/2022/01/bg-dirtyseconds.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+
+	overscroll-behavior: auto!important;
 }
 
 body {
