@@ -5,6 +5,11 @@
     import { onMount } from 'svelte/internal';
     import axios from 'axios';
     import Swal from 'sweetalert2'
+    import Loading from './Loading.svelte';
+    import LoadingWord from './LoadingWord.svelte';
+    import {
+        currentGameScreen
+    } from "../stores/stores.js";
 
     const Toast = Swal.mixin({
         toast: true,
@@ -27,6 +32,8 @@
     let code = ""
     let wordName = "";
     let categoryId = "";
+    let loading = false;
+    let loadingWord = false;
 
     const decodeUser = () => {
         var decoded = jwt_decode(window.localStorage.getItem('auth'));
@@ -34,6 +41,52 @@
         if(!user.roles.includes('admin')){
             currentGameScreen.set(Home);
             prevGameScreen.set(Home);
+        }
+    }
+
+    const deleteWord = async (id) => {
+        if(confirm("Are you sure, you want to delete this word?")) {
+            loadingWord = true;
+            await axios.delete(`https://dirty-seconds.herokuapp.com/api/words/${id}`)
+            .then(res => {
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Word deleted'
+                })
+                // words = words.filter(word => word.id != id)
+                getWords()
+                loadingWord = false;
+            })
+            .catch(err => {
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Error deleting word'
+                })
+                loadingWord = false;
+            })
+        }
+    }
+
+    const deleteCategory = async (id) => {
+        if(confirm("Are you sure, You want to delete this category?")) {
+            loadingWord = true;
+            await axios.delete(`https://dirty-seconds.herokuapp.com/api/categories/${id}`)
+            .then(res => {
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Category deleted'
+                })
+                // words = words.filter(word => word.id != id)
+                getCategories()
+                loadingWord = false;
+            })
+            .catch(err => {
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Error deleting category'
+                })
+                loadingWord = false;
+            })
         }
     }
 
@@ -99,10 +152,10 @@
     }
 
     const getCategories = async () => {
-        // loading = true;
+        loading = true;
         const response = await axios.get('https://dirty-seconds.herokuapp.com/api/categories');
         categories = response.data;
-        // loading = false;
+        loading = false;
         console.log(categories);
         categories = categories.map(category => {
             return {
@@ -118,10 +171,10 @@
     }
 
     const getWords = async () => {
-        // loading = true;
+        loadingWord = true;
         const response = await axios.get('https://dirty-seconds.herokuapp.com/api/words');
         words = response.data;
-        // loading = false;
+        loadingWord = false;
         console.log(words);
     }
 
@@ -141,6 +194,9 @@
     })
 </script>
 <div class="categories">
+    <button class="btn btn-primary btn-sm mb-3" on:click={() => currentGameScreen.set(Home)}>
+        <i class="fas fa-chevron-left"></i> Back to Home
+    </button>
     <div class="card">
         <div class="card-body">
             <h3>Categories <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addCategoriesModal"><i class="fas fa-plus-square"></i> Add</button></h3>
@@ -173,6 +229,10 @@
               </table>
         </div>
     </div>
+    {#if loading}
+         <!-- content here -->
+         <Loading/>
+    {/if}
 </div>
 <!-- Modal categories -->
 <form on:submit|preventDefault={addCategory}>
@@ -226,10 +286,13 @@
                     <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="far fa-plus-square"></i></button>
                 </div>
                 <ul class="words">
+                    {#if loadingWord}
+                        <LoadingWord/>
+                    {/if}
                     {#each filterWords as item, i}
                     <li>
                         <p>{item.description}</p>
-                        <button class="btn btn-danger btn-sm" type="button"><i class="fas fa-trash-alt"></i></button>
+                        <button on:click={() => deleteWord(item.id)} class="btn btn-danger btn-sm" type="button"><i class="fas fa-trash-alt"></i></button>
                     </li>
                     {/each}
                 </ul>
