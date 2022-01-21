@@ -151,7 +151,7 @@
         </div>
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="c-white">Thirty Seconds</h1>
+                <h1 class="c-white">Play Dirty 30 seconds</h1>
             </div>
         </div>
     </div>
@@ -162,7 +162,7 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="row mb-2">
-                                <div class="col-12"><h5 class="text-center">Team Toevoegen</h5></div>
+                                <div class="col-12"><h5 class="text-center">Teams Toevoegen</h5></div>
                                 <div class="col-12">
                                     <input class="form-control" type="text" bind:value="{newTeamName}" placeholder="Team Naam">
                                 </div>
