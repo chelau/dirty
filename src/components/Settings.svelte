@@ -60,7 +60,7 @@
                 <div class="col-12 col-md-8 col-lg-6 mb-3">
                     <div class="card bg-blue" on:click="{() => goToHome()}">
                         <div class="card-body text-center">
-                            <h3 class="c-white mb-0">Home</h3>
+                            <h3 class="c-white mb-0">Start</h3>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                 <div class="col-12 col-md-8 col-lg-6 mb-3">
                     <div class="card bg-red" on:click="{() => endGame()}">
                         <div class="card-body text-center">
-                            <h3 class="c-white mb-0">Beeindig Spel</h3>
+                            <h3 class="c-white mb-0">Stoppen</h3>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                 <div class="col-12 col-md-8 col-lg-6 mb-3">
                     <div class="card bg-red" on:click="{() => setDefaultSettings()}">
                         <div class="card-body text-center">
-                            <h3 class="c-white mb-0">Standaardinstellingen</h3>
+                            <h3 class="c-white mb-0">Reset instellingen</h3>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                 <div class="col-12 col-md-8 col-lg-6 mb-3">
                     <div class="card bg-red" on:click="{() => logout()}">
                         <div class="card-body text-center">
-                            <h3 class="c-white mb-0">Log Out</h3>
+                            <h3 class="c-white mb-0">Uitloggen</h3>
                         </div>
                     </div>
                 </div>
@@ -98,13 +98,13 @@
 
             <div class="row mb-4 mt-5">
                 <div class="col-12 c-white text-center">
-                    <button on:click="{() => {currentGameScreen.set(Credits)}}" class="btn btn-small bg-blue c-white d-block mx-auto mb-2"><i class="fas fa-crown"></i> Wall of Fame <i class="fas fa-crown"></i></button>
-                    <a href="https://github.com/TheMardy/ThirtySeconds/releases" class="text-decoration-underline c-white" target="_blank">Version: _VERSION</a>
+                    <button on:click="{() => {currentGameScreen.set(Credits)}}" class="btn btn-small bg-blue c-white d-block mx-auto mb-2"><i class="fas fa-crown"></i>Donateurs LOVE<i class="fas fa-crown"></i></button>
+                    <a href="http://play30.dirty-seconds.com/UKBQYzyv" class="text-decoration-underline c-white" target="_blank">Ja €3,95 per maand betalen. Is niks! Waar wacht je op?</a>
                     <div on:click="{() => forceSWupdate()}" class="d-inline">
                         <i class="fas fa-sync-alt"></i>
                     </div><br>
                     
-                    <h6>Made with <i class="fas fa-heart mt-4"></i> by <a href="https://github.com/TheMardy" target="_blank">Mardy</a></h6>
+                    <h6>Made with <i class="fas fa-heart mt-4"></i> by <a href="https://github.com/TheMardy" target="_blank">Mardy</a>Restyled and edited by MYLU & CHELAU</h6>
                 </div>
             </div>
     </div>
