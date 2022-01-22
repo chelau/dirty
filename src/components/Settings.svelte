@@ -47,7 +47,7 @@
                         <div class="card-body">
                             <div class="row mb-2 justify-content-center">
                                 <div class="col-12">
-                                    <label for="pointsGoal" class="form-label">Punten Doel:</label>
+                                    <label for="pointsGoal" class="form-label">Punten:</label>
                                     <input inputmode="numeric" pattern="[0-9]*" type="number" class="form-control" id="pointsGoal" bind:value="{$settings.pointsToWin}"
                                     on:change="{() => changeGoal()}">
                                 </div>
@@ -98,13 +98,13 @@
 
             <div class="row mb-4 mt-5">
                 <div class="col-12 c-white text-center">
-                    <button on:click="{() => {currentGameScreen.set(Credits)}}" class="btn btn-small bg-blue c-white d-block mx-auto mb-2"><i class="fas fa-crown"></i>Donateurs LOVE<i class="fas fa-crown"></i></button>
+                    <button on:click="{() => {currentGameScreen.set(Credits)}}" class="btn btn-small bg-blue c-white d-block mx-auto mb-2"><i class="fas fa-crown"></i>Donateurs <i class="fas fa-heart"> LOVE<i class="fas fa-crown"></i></button>
                     <a href="http://play30.dirty-seconds.com/UKBQYzyv" class="text-decoration-underline c-white" target="_blank">Ja €3,95 per maand betalen. Is niks! Waar wacht je op?</a>
                     <div on:click="{() => forceSWupdate()}" class="d-inline">
                         <i class="fas fa-sync-alt"></i>
                     </div><br>
                     
-                    <h6>Made with <i class="fas fa-heart mt-4"></i> by <a href="https://github.com/TheMardy" target="_blank">Mardy</a>Restyled and edited by MYLU & CHELAU</h6>
+                    <h6>Made with <i class="fas fa-heart mt-4"></i> by <a href="https://github.com/TheMardy" target="_blank">Mardy</a> Restyled and edited by MYLU & CHELAU</h6>
                 </div>
             </div>
     </div>
