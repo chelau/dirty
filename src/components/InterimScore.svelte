@@ -7,12 +7,7 @@
 
     function startTime() {
         let counter = 3;
-        
-   
-p {
-    font-size: 16px;
-    font-size: 4vw;
-}
+       
         window.pushToast(counter);
 
         let interval = setInterval(function() {
@@ -41,7 +36,7 @@ p {
     
 </script>
 
-<div class="" in:fly>
+<div class="2" in:fly>
     <div class="container-fluid pt-2">
         <div class="row mb-3">
             <div class="col-12">
@@ -115,10 +110,6 @@ p {
 
 <style>
     
-    p {
-    font-size: 16px;
-    font-size: 4vw;
-}
     
     .separator {
         display: flex;
