@@ -7,6 +7,12 @@
 
     function startTime() {
         let counter = 3;
+        
+   
+p {
+    font-size: 16px;
+    font-size: 4vw;
+}
         window.pushToast(counter);
 
         let interval = setInterval(function() {
