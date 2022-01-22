@@ -43,7 +43,7 @@
             if (response.data) {
                 Toast.fire({
                     icon: 'success',
-                    title: 'Register Successfully'
+                    title: 'Succesvol toegevoegd aan de 2G database.'
                 })
                 currentGameScreen.set(Login);
             } else {
@@ -75,14 +75,14 @@
                         type="text"
                         bind:value={fullName}
                         required
-                        placeholder="Full Name"
+                        placeholder="Voor & Achternaam"
                     />
                 </div>
                 <div class="col-12 mt-3">
                     <input
                         class="form-control"
                         type="tel"
-                        placeholder="Your Phone"
+                        placeholder="WhatsApp?"
                         required
                         bind:value={phone}
                     />
@@ -91,7 +91,7 @@
                     <input
                         class="form-control"
                         type="email"
-                        placeholder="Your email"
+                        placeholder="Emailadres"
                         required
                         bind:value={email}
                     />
@@ -100,7 +100,7 @@
                     <input
                         class="form-control"
                         type="password"
-                        placeholder="Your password"
+                        placeholder="Wachtwoord"
                         required
                         bind:value={password}
                         minlength="5"
@@ -110,10 +110,10 @@
                     <button
                         class="btn btn-primary"
                         on:click={() => currentGameScreen.set(Login)}
-                        >Back to login</button
+                        >Terug</button
                     >
                     <button type="submit" class="btn btn-success"
-                        >Register</button
+                        >Registreren</button
                     >
                 </div>
             </form>
