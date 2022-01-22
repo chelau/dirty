@@ -19,7 +19,7 @@
         </div>
         <div class="row justify-content-center pt-3">
             <div class="col-12 mb-5 text-center">
-                <h5 class="c-white">Tijd is op!</h5>
+                <h5 class="c-red">Stop de tijd! Wat? EHHH</h5>
             </div>
         </div>
         <div class="row justify-content-center pt-3">
