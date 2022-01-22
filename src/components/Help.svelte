@@ -34,9 +34,9 @@
                         <div class="card-body">
                             <div class="row mb-2 justify-content-center">
                                 <div class="col-12">
-                                    <h3 class="text-center">Installeren & Updaten</h3>
+                                    <h3 class="text-center">Dirty 30 spel installeren & Updaten</h3>
                                     <p class="mb-0">Deze app is te installeren als Progressive Web App, zodat hij zonder 
-                                        internetverbinding is te gebruiken en automatische updates krijgt.
+                                        internetverbinding is te gebruiken en automatische updates krijgt. Minder stroom verbruikt dan andere apps.
                                     </p>
                                 </div>
                             </div>
@@ -50,9 +50,9 @@
                                     <h5 on:click="{() => {safari = !safari}}"><i class="fab fa-apple"></i> Safari <i class="fas float-end d-inline fa-chevron-down"></i></h5>
                                     <hr>
                                     <ol type="1">
-                                        <li>Klik op het "delen" icoontje</li>
+                                        <li>Deel mij met je matties bro!</li>
                                         <li>Klik op "Zet op beginscherm"</li>
-                                        <li>Klik op "Voeg toe"</li>
+                                        <li>Klik op "Voeg mij toe"</li>
                                     </ol>
                                     {/if}
                                 </div>
@@ -67,7 +67,7 @@
                                     <hr>
                                     <ol type="1">
                                         <li>Klik op het <i class="fas fa-ellipsis-v"></i> icoontje</li>
-                                        <li>Klik op "App installeren"</li>
+                                        <li>Klik op "PWApp installeren"</li>
                                         <li>Klik op "Installeren"</li>
                                     </ol>
                                     {/if}
@@ -76,10 +76,10 @@
                             <div class="row justify-content-center">
                                 <div class="col-12 text-left">
                                     {#if !samsungInternet}
-                                    <h5 on:click="{() => {samsungInternet = !samsungInternet}}"><i class="fab fa-android"></i> Samsung Internet <i class="fas float-end d-inline fa-chevron-right"></i></h5>
+                                    <h5 on:click="{() => {samsungInternet = !samsungInternet}}"><i class="fab fa-android"></i> Samsung Internet (Koop een echte telefoon) <i class="fas float-end d-inline fa-chevron-right"></i></h5>
                                     <hr>
                                     {:else}
-                                    <h5 on:click="{() => {samsungInternet = !samsungInternet}}"><i class="fab fa-android"></i> Samsung Internet <i class="fas float-end d-inline fa-chevron-down"></i></h5>
+                                    <h5 on:click="{() => {samsungInternet = !samsungInternet}}"><i class="fab fa-android"></i> Samsung Internet (Ja echt! Kijk maar)<i class="fas float-end d-inline fa-chevron-down"></i></h5>
                                     <hr>
                                     <ol type="1">
                                         <li>Klik op het <i class="fas fa-ellipsis-v"></i> icoontje</li>
@@ -100,7 +100,7 @@
                             <div class="row mb-2 justify-content-center">
                                 <div class="col-12">
                                     <h3 class="text-center">Spelen</h3>
-                                    <p class="mb-0">Uitleg over hoe Thirty Seconds te spelen is
+                                    <p class="mb-0">Speluitleg: The 30 Thirty Seconds game; Johhny de mol legt het even voor je uit.
                                     </p>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
                                         Voeg een team toe door de teamnaam in te vullen en op de <i class="fas fa-plus-square"></i> knop te klikken. <br>
                                         Voeg vervolgens spelers toe door op het team te klikken, de speler naam in te vullen en op de <i class="fas fa-plus-square"></i> knop
                                         te klikken <br> <br>
-                                        Note: Een team bestaat uit minimaal 2 spelers
+                                        Strijders: Een team bestaat uit minimaal ja echt! <b>2 spelers</b>
                                     </p>
                                     {/if}
                                 </div>
