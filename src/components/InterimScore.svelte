@@ -114,6 +114,12 @@ p {
 <Toast />
 
 <style>
+    
+    p {
+    font-size: 16px;
+    font-size: 4vw;
+}
+    
     .separator {
         display: flex;
         align-items: center;
