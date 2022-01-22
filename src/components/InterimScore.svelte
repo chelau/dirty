@@ -36,7 +36,7 @@
     
 </script>
 
-<div class="2" in:fly>
+<div class="" in:fly>
     <div class="container-fluid pt-2">
         <div class="row mb-3">
             <div class="col-12">
@@ -87,7 +87,7 @@
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="card">
                         <div class="card-body text-center c-purple">
-                            <h5 class="d-inline">Ronde {getGameRound()} <small>({ getTurn() +1 }/{$game.teams.length})</small> </h5>
+                            <h3 class="d-inline">Ronde {getGameRound()} <small>({ getTurn() +1 }/{$game.teams.length})</small> </h3>
                             <h6 class="separator mb-4">de stand</h6>
                             {#each getOrderedTeams() as team, i}
                             {#if team.name == getCurrentTeam().name && getOrderedTeams()[0].points < $settings.pointsToWin}
@@ -95,7 +95,7 @@
                             {:else}
                             <h5 class="float-start d-inline">{i+1} {team.name} </h5>
                             {/if}
-                            <h5 class="float-end d-inline">{team.points}</h5>
+                            <h3 class="float-end d-inline">{team.points}</h3>
                             <div class="clearfix"></div>
                             <hr class="mt-0 mb-4">
                             {/each}
