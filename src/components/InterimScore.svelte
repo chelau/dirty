@@ -76,7 +76,7 @@
                 <div class="col-12 col-md-8 col-lg-6 mb-3">
                     <div class="card bg-blue" on:click="{() => startTime()}">
                         <div class="card-body text-center">
-                            <h2 class="c-white mb-0">Start de tijd</h2>
+                            <h2 class="c-red mb-0">Start de tijd</h2>
                         </div>
                     </div>
                 </div>
