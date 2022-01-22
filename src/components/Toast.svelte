@@ -41,12 +41,12 @@
 		z-index: 9999;
 	}
 	.toast-item {
-		border-radius: 4px;
-		padding: 12px 10px;
+		border-radius: 6px;
+		padding: 15px 10px;
 		margin: 10px auto;
 		max-width: 400px;
 		background: rgba(0, 0, 0, 0.7);
-		color: #fff;
+		color: #f00;
 	}
 </style>
 
